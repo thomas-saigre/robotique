@@ -44,7 +44,7 @@ target_attacked = zeros(1,N); % Which robots are attacking the taget
 %% AFFICHAGE
 d = plot(x_target,y_target,'ro');
 target_caption = text(-1.5, -1.1, sprintf('Energie de la cible : %0.1f%%', target_energy), 'FontSize', 15, 'FontWeight', 'bold', 'Color','r');
-time_caption = text(-1.5, -1.2, sprintf('Temps écoulé : 0 s'), 'FontSize', 14, 'FontWeight', 'bold', 'Color','r');
+time_caption = text(-1.5, -1.2, sprintf('Temps Ã©coulÃ© : 0 s'), 'FontSize', 14, 'FontWeight', 'bold', 'Color','r');
 uistack(target_caption, 'top'); 
 uistack(time_caption, 'top'); 
 uistack(d, 'bottom');
@@ -219,15 +219,15 @@ while target_energy>0 && total_time<900
     
     % Display
         target_caption.String = sprintf('Energie de la cible %0.1f%%', round(10.*target_energy)/10);
-        time_caption.String = sprintf('Temps écoulé : %d s', round(iteration*r.time_step));
+        time_caption.String = sprintf('Temps Ã©coulÃ© : %d s', round(iteration*r.time_step));
     
 end
 
 % Resultat
-    disp(['Temps total pour détruire la cible : ' num2str(round(iteration*r.time_step)) ' secondes'])
+    disp(['Temps total pour dÃ©truire la cible : ' num2str(round(iteration*r.time_step)) ' secondes'])
 
     
-% Données finales
+% DonnÃ©es finales
     data_X = data_X(1:iteration,:);
     data_Y = data_Y(1:iteration,:);
     data_attack = data_attack(1:iteration,:);

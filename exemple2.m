@@ -1,20 +1,20 @@
 %% Voici un exemple de progamme pour la fonction *update* des robots.
 
-% Dans l'exemple précédent, les robots perdent beaucoup de temps à longer les murs 
-% de l'arène. Dans ce deuxième exemple, il vont en plus éviter les murs
-% (tout le reste est identique à l'exemple 1).
+% Dans l'exemple prÃ©cÃ©dent, les robots perdent beaucoup de temps Ã  longer les murs 
+% de l'arÃ¨ne. Dans ce deuxiÃ¨me exemple, il vont en plus Ã©viter les murs
+% (tout le reste est identique Ã  l'exemple 1).
 
 
-   % Si le robot ne sait pas où est la cible, il cherche 
-   % en se déplaçant au hasard
+   % Si le robot ne sait pas oÃ¹ est la cible, il cherche 
+   % en se dÃ©plaÃ§ant au hasard
     if (robot.cible_detected==0)
 
-        % D'abord il faut vérifier s'il n'y a pas un mur à proximité. 
-        % Dans ce programme, si le robot est à moins de 20 cm d'un mur, il se 
-        % dirige dans la direction opposée
+        % D'abord il faut vÃ©rifier s'il n'y a pas un mur Ã  proximitÃ©. 
+        % Dans ce programme, si le robot est Ã  moins de 20 cm d'un mur, il se 
+        % dirige dans la direction opposÃ©e
         
-        border_v = [0 0]; % direction opposée aux murs
-        SAFE_BORDER = 0.2; % distance d'évitement des murs (20 cm)
+        border_v = [0 0]; % direction opposÃ©e aux murs
+        SAFE_BORDER = 0.2; % distance d'Ã©vitement des murs (20 cm)
 
         % La variable INFO.murs nous donne la distance de chaque mur.
         if INFO.murs.dist_droite < SAFE_BORDER
@@ -31,12 +31,12 @@
         end 
 
         
-        % Si le robot est arreté, il démarre dans une direction aléatoire
+        % Si le robot est arretÃ©, il dÃ©marre dans une direction alÃ©atoire
         if (robot.vx==0 && robot.vy==0)
             randVel = [rand.*2 - 1 ; rand.*2 - 1 ] ;
             v = randVel + border_v ; 
             
-            robot.move(v(1),v(2)); % la fonction 'move' permet de déplacer le robot.
+            robot.move(v(1),v(2)); % la fonction 'move' permet de dÃ©placer le robot.
             
         else
             
@@ -55,7 +55,7 @@
     else    
         
     % Le robot qui connait l'emplacement de la cible donne 
-    % l'information à tous ses voisins.
+    % l'information Ã  tous ses voisins.
     
             for i=1:INFO.nbVoisins
                 voisin = INFO.voisins{i};
@@ -63,7 +63,7 @@
             end
        
     % Si le robot connait l'emplacement de la cible
-    % il s'en rapproche jusqu'à ce qu'il puisse l'attaquer
+    % il s'en rapproche jusqu'Ã  ce qu'il puisse l'attaquer
         if (robot.cible_attacked==0)
             vx = robot.cible_x-robot.x ; 
             vy = robot.cible_y-robot.y ;

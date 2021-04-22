@@ -57,6 +57,9 @@ classdef Robot < handle
         cible_x         % Position x de la cible dans l'environement (initialement inconnue)
         cible_y         % Position y de la cible dans l'environement (initialement inconnue)
 
+        rapporteur      % 1 si le robot à pour mission d'aller propager l'emplacement, 0 sinon
+        PROBA_RAP       % Proba pour le robot d'aller rapporter
+        TTR             % Time To Rapporte
         
         % Ces 4 propriétés se mettent aussi à jour automatiquement.
         % Vous pouvez les lire si vous en avez besoin mais vous ne 
@@ -97,13 +100,16 @@ classdef Robot < handle
             robot.cible_attacked = 0 ;
             robot.cible_x = NaN ;
             robot.cible_y = NaN ;
+            robot.PROBA_RAP = 1 ;
+            robot.rapporteur = 0 ;
+            robot.TTR = 600 ;
 
         end
         
         
         function robot = move(robot, vx, vy)
             % Utilisez cette fonction pour donner une direction de
-            % déplacement (vx, vy) à ce robot ou à un robot voisin. 
+            % déplacement (vx, vy) à ce robot ou à un robot voisin.
             % Par exemple move(1,0) produira un déplacement vers la
             % droite.
             
@@ -116,9 +122,13 @@ classdef Robot < handle
             robot.vy = v(2) ;
         end
 
+        function robot = move_toward(robot, Posx, Posy)
+            % Cette fonction passe l'information de la direction à suivre
+            robot.move(Posx-robot.x, Posy-robot.y);
+        end
         
         function robot = set_info_cible(robot, cible_x, cible_y)
-            % Cette fonction permet de renseigner les informations sur la 
+            % Cette fonction permet de renseigner les informations sur la
             % cible. Vous pouvez vous en servir pour passer l'information
             % à un autre robot voisin.
 
@@ -126,7 +136,23 @@ classdef Robot < handle
             
             robot.cible_x = cible_x ;
             robot.cible_y = cible_y ;
+
+            if (robot.rapporteur == 0)
+
+                if (rand < robot.PROBA_RAP)
+                    robot.rapporteur = 1 ;
+                else
+                    ;
+                end
+            else
+                ;
+            end
         end   
+
+
+        function robot = set_proba(robot, proba)
+            robot.PROBA_RAP = proba ;
+        end
         
         
         function robot = start_attack(robot)  
@@ -237,10 +263,8 @@ classdef Robot < handle
             % https://form.jotform.com/211041157414038
             
             % Amusez-vous bien !
-            
 
         end
-        
 
     end
 end

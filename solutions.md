@@ -19,12 +19,21 @@ Quelques fois, les robots finissent leur `TTR` avant que tous soient au courant 
 
 # Résultats
 
+## Moyennes
+
 Les calculs sont faits sur 10 simulations.
 
 
 | Modèle     | Temps moyen | Meilleur temps | Pire temps |
 |-----------:|-------------|----------------|------------|
-| exemple1   | 135.0789    | 38.313         | 303.072    |
-| exemple2   | 103.7784    | 50.226         | 159.687    |
-| rapporteur | 91.7532     | 59.301         | 276.705    |
+| exemple1   | 140.811     | 43.362         | 595.089    |
+| exemple2   | 109.9065    | 54.681         | 185.493    |
+| rapporteur | 85.9914     | 58.08          | 127.512    |
 
+## Records
+
+| Modèle     | Meilleur temps | Pire temps |
+|-----------:|----------------|------------|
+| exemple1   | 38.313         | 595.089    |
+| exemple2   | 50.226         | 310.563    |
+| rapporteur | 58.08          | 276.705    |

@@ -1,4 +1,5 @@
 % Cf solutions.md pour voir la description de ce qui est fait
+robot.TTG = robot.TTG - 1 ;
 
 if (robot.cible_detected==0)
 
@@ -25,9 +26,13 @@ if (robot.cible_detected==0)
 
     
     % Si le robot est arreté, il démarre dans une direction aléatoire
-    if (robot.vx==0 && robot.vy==0)
-        randVel = [rand.*2 - 1 ; rand.*2 - 1 ] ;
-        v = randVel + border_v ;
+    if ((robot.vx==0 && robot.vy==0) || robot.TTG > 0)
+
+        vel = [ cos(2*pi/12*(robot.id-1)) ; sin(2*pi/12*(robot.id-1)) ] ;
+        % disp(['id:' num2str(robot.id) ' v1 ' num2str(cos(2*pi/12*(robot.id-1))) " v2 " num2str(sin(2*pi/12*(robot.id-1))) ])
+        % vel = [rand.*2 - 1 ; rand.*2 - 1 ] ;
+
+        v = vel + border_v ;
         
         robot.move(v(1),v(2)); % la fonction 'move' permet de déplacer le robot.
         

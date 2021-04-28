@@ -60,6 +60,7 @@ classdef Robot < handle
         rapporteur      % 1 si le robot à pour mission d'aller propager l'emplacement, 0 sinon
         PROBA_RAP       % Proba pour le robot d'aller rapporter
         TTR             % Time To Rapporte
+        TTG             % Time to Go
         
         % Ces 4 propriétés se mettent aussi à jour automatiquement.
         % Vous pouvez les lire si vous en avez besoin mais vous ne 
@@ -103,6 +104,7 @@ classdef Robot < handle
             robot.PROBA_RAP = 1 ;
             robot.rapporteur = 0 ;
             robot.TTR = 600 ;
+            robot.TTG = 120 ;
 
         end
         
@@ -141,11 +143,11 @@ classdef Robot < handle
 
                 if (rand < robot.PROBA_RAP)
                     robot.rapporteur = 1 ;
-                else
-                    ;
+                % else
+                %     robot.rapporteur = 0 ;
                 end
-            else
-                ;
+            % else
+            %     robot.rapporteur = 0 ;
             end
         end   
 
